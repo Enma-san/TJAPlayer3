@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.IO;
 using FDK;
+using TJAPlayer3;
 
 namespace DTXMania
 {
@@ -187,6 +188,8 @@ namespace DTXMania
                 CDTXMania.ConfigIni.eScrollMode = EScrollMode.Normal;
                 CDTXMania.ConfigIni.bスクロールモードを上書き = false;
                 Trace.TraceInformation( "選曲ステージの活性化を完了しました。" );
+                var discord = new Discord();
+                discord.UpdatePresence("", Properties.Discord.Stage_SongSelect, CDTXMania.StartupTime);
 				Trace.Unindent();
 			}
 		}

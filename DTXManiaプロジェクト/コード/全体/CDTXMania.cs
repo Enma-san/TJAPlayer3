@@ -337,9 +337,7 @@ namespace DTXMania
 			set;
 		}
 
-        public Discord Discord;
-
-        public string StartupTime;
+        public static string StartupTime;
 
         #endregion
 
@@ -2287,9 +2285,10 @@ for (int i = 0; i < 3; i++) {
 			Trace.TraceInformation( "アプリケーションの初期化を完了しました。" );
 
             #region Discordの処理
-            this.Discord = new Discord();
-            this.Discord.Initialize("428233983025741855");
-            this.Discord.UpdatePresence("", Properties.Discord.Stage_StartUp, this.Discord.GetUnixNowTime());
+            var discord = new Discord();
+            discord.Initialize("428233983025741855");
+            StartupTime = discord.GetUnixNowTime();
+            discord.UpdatePresence("", Properties.Discord.Stage_StartUp, StartupTime);
             #endregion
 
             #region [ 最初のステージの起動 ]
@@ -2330,7 +2329,8 @@ for (int i = 0; i < 3; i++) {
 				Trace.TraceInformation( "■ アプリケーションの終了" );
 
                 #region Discord
-                this.Discord.Shutdown();
+                var discord = new Discord();
+                discord.Shutdown();
                 #endregion
                 #region [ 曲検索の終了処理 ]
                 //---------------------

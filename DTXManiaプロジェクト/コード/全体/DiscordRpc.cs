@@ -175,7 +175,7 @@ namespace TJAPlayer3
         /// <returns>Unix時間。</returns>
         public string GetUnixNowTime()
         {
-            return Math.Floor((DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds).ToString();
+            return (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.ToString();
         }
     }
 }

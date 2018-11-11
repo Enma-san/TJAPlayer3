@@ -7,6 +7,7 @@ using System.IO;
 using SlimDX;
 using System.Drawing.Text;
 using FDK;
+using TJAPlayer3;
 
 namespace DTXMania
 {
@@ -62,7 +63,9 @@ namespace DTXMania
 				this.str曲タイトル = cdtx.TITLE;
                 this.strサブタイトル = cdtx.SUBTITLE;
 				this.strSTAGEFILE = CSkin.Path(@"Graphics\4_SongLoading\Background.png");
-				cdtx.On非活性化();
+                var discord = new Discord();
+                discord.UpdatePresence(cdtx.TITLE + ".tja", Properties.Discord.Stage_InGame + (CDTXMania.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), "", (long.Parse(CDTXMania.StartupTime) + cdtx.listChip[cdtx.listChip.Count - 1].n発声時刻ms * 0.001).ToString());
+                cdtx.On非活性化();
 				base.On活性化();
 			}
 			finally

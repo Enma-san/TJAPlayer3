@@ -2,6 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 using FDK;
+using TJAPlayer3;
 
 namespace DTXMania
 {
@@ -222,10 +223,13 @@ namespace DTXMania
 						}
 					}
 				}
-				//---------------------
-				#endregion
+                //---------------------
+                #endregion
 
-				base.On活性化();
+                var discord = new Discord();
+                discord.UpdatePresence(CDTXMania.DTX.TITLE + ".tja", Properties.Discord.Stage_Result + (CDTXMania.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), CDTXMania.StartupTime);
+
+                base.On活性化();
 			}
 			finally
 			{
