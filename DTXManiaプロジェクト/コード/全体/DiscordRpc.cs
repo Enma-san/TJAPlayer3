@@ -93,14 +93,14 @@ namespace TJAPlayer3
         /// <param name="endTimeStamp">終了時間(Unix時間)</param>
         /// <param name="smallImageKey">小さなアイコン用キー。</param>
         /// <param name="smallImageText">小さなアイコンのツールチップに表示するテキスト。</param>
-        public void UpdatePresence(string details, string state, string startTimeStamp = null, string endTimeStamp = null, string smallImageKey = "None", string smallImageText = "")
+        public void UpdatePresence(string details, string state, long startTimeStamp = 0, long endTimeStamp = 0, string smallImageKey = "None", string smallImageText = "")
         {
             var presence = new DiscordRpc.RichPresence();
             presence.details = StrToPtr(details);
             presence.state = StrToPtr(state);
 
-            if (!string.IsNullOrEmpty(startTimeStamp)) presence.startTimestamp = long.Parse(startTimeStamp);
-            if (!string.IsNullOrEmpty(endTimeStamp)) presence.endTimestamp = long.Parse(endTimeStamp);
+            if (startTimeStamp != 0) presence.startTimestamp = startTimeStamp;
+            if (endTimeStamp != 0) presence.endTimestamp = endTimeStamp;
             presence.largeImageKey = StrToPtr("tjaplayer3");
             presence.largeImageText = StrToPtr("Ver." + CDTXMania.VERSION);
             if (!string.IsNullOrEmpty(smallImageKey)) presence.smallImageKey = StrToPtr(smallImageKey);
@@ -170,12 +170,12 @@ namespace TJAPlayer3
         }
 
         /// <summary>
-        /// 現在のUnix時間をstring型で返します。
+        /// 現在のUnix時間をlong型で返します。
         /// </summary>
         /// <returns>Unix時間。</returns>
-        public string GetUnixNowTime()
+        public long GetUnixNowTime()
         {
-            return (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.ToString();
+            return (long)(DateTime.Now.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds);
         }
     }
 }

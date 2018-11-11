@@ -337,7 +337,7 @@ namespace DTXMania
 			set;
 		}
 
-        public static string StartupTime;
+        public static long StartupTime;
 
         #endregion
 

@@ -64,7 +64,7 @@ namespace DTXMania
                 this.strサブタイトル = cdtx.SUBTITLE;
 				this.strSTAGEFILE = CSkin.Path(@"Graphics\4_SongLoading\Background.png");
                 var discord = new Discord();
-                discord.UpdatePresence(cdtx.TITLE + ".tja", Properties.Discord.Stage_InGame + (CDTXMania.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), "", (long.Parse(CDTXMania.StartupTime) + cdtx.listChip[cdtx.listChip.Count - 1].n発声時刻ms * 0.001).ToString());
+                discord.UpdatePresence(cdtx.TITLE + ".tja", Properties.Discord.Stage_InGame + (CDTXMania.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), 0, discord.GetUnixNowTime() + (long)cdtx.listChip[cdtx.listChip.Count - 1].n発声時刻ms / 1000);
                 cdtx.On非活性化();
 				base.On活性化();
 			}
