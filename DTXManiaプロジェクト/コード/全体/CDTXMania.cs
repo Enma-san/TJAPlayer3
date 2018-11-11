@@ -2289,10 +2289,7 @@ for (int i = 0; i < 3; i++) {
             #region Discordの処理
             this.Discord = new Discord();
             this.Discord.Initialize("428233983025741855");
-
-            StartupTime = Math.Floor((DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds).ToString();
-            Console.WriteLine(StartupTime);
-            this.Discord.UpdatePresence("", Properties.Discord.Stage_StartUp, StartupTime);
+            this.Discord.UpdatePresence("", Properties.Discord.Stage_StartUp, this.Discord.GetUnixNowTime());
             #endregion
 
             #region [ 最初のステージの起動 ]

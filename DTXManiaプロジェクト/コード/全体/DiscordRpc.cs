@@ -168,5 +168,14 @@ namespace TJAPlayer3
                 _buffers.RemoveAt(i);
             }
         }
+
+        /// <summary>
+        /// 現在のUnix時間をstring型で返します。
+        /// </summary>
+        /// <returns>Unix時間。</returns>
+        public string GetUnixNowTime()
+        {
+            return Math.Floor((DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds).ToString();
+        }
     }
 }
