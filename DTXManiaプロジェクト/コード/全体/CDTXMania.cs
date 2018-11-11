@@ -14,6 +14,7 @@ using SlimDX.Direct3D9;
 using FDK;
 using SampleFramework;
 using System.Reflection;
+using TJAPlayer3;
 
 namespace DTXMania
 {
@@ -335,6 +336,10 @@ namespace DTXMania
 			get;
 			set;
 		}
+
+        public Discord Discord;
+
+        public string StartupTime;
 
         #endregion
 
@@ -2281,6 +2286,14 @@ for (int i = 0; i < 3; i++) {
 
 			Trace.TraceInformation( "アプリケーションの初期化を完了しました。" );
 
+            #region Discordの処理
+            this.Discord = new Discord();
+            this.Discord.Initialize("428233983025741855");
+
+            StartupTime = Math.Floor((DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds).ToString();
+            Console.WriteLine(StartupTime);
+            this.Discord.UpdatePresence("", Properties.Discord.Stage_StartUp, StartupTime);
+            #endregion
 
             #region [ 最初のステージの起動 ]
             //---------------------
@@ -2318,9 +2331,13 @@ for (int i = 0; i < 3; i++) {
 			{
 				Trace.TraceInformation( "----------------------" );
 				Trace.TraceInformation( "■ アプリケーションの終了" );
-				#region [ 曲検索の終了処理 ]
-				//---------------------
-				if ( actEnumSongs != null )
+
+                #region Discord
+                this.Discord.Shutdown();
+                #endregion
+                #region [ 曲検索の終了処理 ]
+                //---------------------
+                if ( actEnumSongs != null )
 				{
 					Trace.TraceInformation( "曲検索actの終了処理を行います。" );
 					Trace.Indent();
