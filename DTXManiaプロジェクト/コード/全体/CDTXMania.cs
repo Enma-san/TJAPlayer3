@@ -2288,10 +2288,9 @@ for (int i = 0; i < 3; i++) {
 			Trace.TraceInformation( "アプリケーションの初期化を完了しました。" );
 
             #region Discordの処理
-            var discord = new Discord();
-            discord.Initialize("428233983025741855");
-            StartupTime = discord.GetUnixNowTime();
-            discord.UpdatePresence("", Properties.Discord.Stage_StartUp, StartupTime);
+            Discord.Initialize("428233983025741855");
+            StartupTime = Discord.GetUnixNowTime();
+            Discord.UpdatePresence("", Properties.Discord.Stage_StartUp, StartupTime);
             #endregion
 
             #region [ 最初のステージの起動 ]
@@ -2332,8 +2331,7 @@ for (int i = 0; i < 3; i++) {
 				Trace.TraceInformation( "■ アプリケーションの終了" );
 
                 #region Discord
-                var discord = new Discord();
-                discord.Shutdown();
+                Discord.Shutdown();
                 #endregion
                 #region [ 曲検索の終了処理 ]
                 //---------------------

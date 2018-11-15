@@ -100,8 +100,7 @@ namespace DTXMania
 			        strサブタイトル == "TJAPlayer3 Developers";
 
 				this.strSTAGEFILE = CSkin.Path(@"Graphics\4_SongLoading\Background.png");
-                var discord = new Discord();
-                discord.UpdatePresence(cdtx.TITLE + ".tja", Properties.Discord.Stage_InGame + (CDTXMania.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), 0, discord.GetUnixNowTime() + (long)cdtx.listChip[cdtx.listChip.Count - 1].n発声時刻ms / 1000);
+
 				base.On活性化();
 			}
 			finally

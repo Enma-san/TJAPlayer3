@@ -188,8 +188,7 @@ namespace DTXMania
                 CDTXMania.ConfigIni.eScrollMode = EScrollMode.Normal;
                 CDTXMania.ConfigIni.bスクロールモードを上書き = false;
                 Trace.TraceInformation( "選曲ステージの活性化を完了しました。" );
-                var discord = new Discord();
-                discord.UpdatePresence("", Properties.Discord.Stage_SongSelect, CDTXMania.StartupTime);
+                Discord.UpdatePresence("", Properties.Discord.Stage_SongSelect, CDTXMania.StartupTime);
 				Trace.Unindent();
 			}
 		}

@@ -226,8 +226,7 @@ namespace DTXMania
                 //---------------------
                 #endregion
 
-                var discord = new Discord();
-                discord.UpdatePresence(CDTXMania.DTX.TITLE + ".tja", Properties.Discord.Stage_Result + (CDTXMania.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), CDTXMania.StartupTime);
+                Discord.UpdatePresence(CDTXMania.DTX.TITLE + ".tja", Properties.Discord.Stage_Result + (CDTXMania.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), CDTXMania.StartupTime);
 
                 base.On活性化();
 			}

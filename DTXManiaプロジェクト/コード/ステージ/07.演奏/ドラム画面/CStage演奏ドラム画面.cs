@@ -10,6 +10,7 @@ using System.Threading;
 using SlimDX;
 using SlimDX.Direct3D9;
 using FDK;
+using TJAPlayer3;
 
 namespace DTXMania
 {
@@ -269,7 +270,8 @@ namespace DTXMania
             //    this.stream = new StreamWriter("noteTest.txt", false);
             //}
 
-		}
+            Discord.UpdatePresence(CDTXMania.DTX.TITLE + ".tja", Properties.Discord.Stage_InGame + (CDTXMania.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), 0, Discord.GetUnixNowTime() + (long)CDTXMania.DTX.listChip[CDTXMania.DTX.listChip.Count - 1].n発声時刻ms / 1000);
+        }
 		public override void On非活性化()
 		{
             this.ct手つなぎ = null;
