@@ -89,6 +89,9 @@ namespace DTXMania
 				}
 			}
 		}
+
+	    public static bool IsPerformingCalibration;
+
 		public static CFPS FPS
 		{ 
 			get; 
